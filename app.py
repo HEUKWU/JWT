@@ -93,38 +93,22 @@ def show_group():
     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
     id = payload['id']
 
-    group_list = list(db.idol_groups.find({}, {'_id': False}))
+    group_list = list(db.idol_groups.find({}, {'_id': False}).sort("like", -1))
+    print(group_list)
     like_list = db.like.find_one({"id": id}, {'_id': False})
-    result_list = []
-    left = []
-    right = []
 
-    for i in group_list:
-        num = i["group_num"]
-        if like_list is not None:
-            if num in like_list["group_num"]:
-                left.append(i)
-            else:
-                right.append(i)
-        else:
-            result_list.append(i)
-
-    if len(result_list) == 0:
-        result_list = left + right
-
-    return jsonify({"group_list": result_list, "like_list": like_list})
+    return jsonify({"group_list": group_list, "like_list": like_list})
 
 
 @app.route("/api/like", methods=["POST"])
 def like():
-    print("like")
-    num_receive = request.form["num_give"]
+    num_receive = int(request.form["num_give"])
     token_receive = request.cookies.get('mytoken')
     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
     id = payload['id']
 
     like_list = db.like.find_one({"id": id}, {'_id': False})
-    like_now = db.idol_groups.find_one({"group_num": num_receive})["like"]
+    like_future = db.idol_groups.find_one({"group_num": num_receive})["like"] + 1
     if like_list is not None:
         like_list["group_num"].append(num_receive)
         db.like.update_one({"id": id}, {'$set': {'group_num': like_list["group_num"]}})
@@ -136,13 +120,13 @@ def like():
         }
         db.like.insert_one(doc)
 
-    db.idol_groups.update_one({"group_num": num_receive}, {'$set': {'like': like_now + 1}})
+    db.idol_groups.update_one({"group_num": num_receive}, {'$set': {'like': like_future}})
     return jsonify({"msg": "좋아요 성공"})
 
 
 @app.route('/api/like/cancel', methods=['POST'])
 def like_cancel():
-    num_receive = request.form["num_give"]
+    num_receive = int(request.form["num_give"])
     token_receive = request.cookies.get('mytoken')
     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
     id = payload['id']
@@ -151,6 +135,8 @@ def like_cancel():
     like_list["group_num"].remove(num_receive)
     db.like.update_one({"id": id}, {'$set': {'group_num': like_list["group_num"]}})
 
+    like_future = db.idol_groups.find_one({"group_num": num_receive})["like"] - 1
+    db.idol_groups.update_one({"group_num": num_receive}, {'$set': {'like': like_future}})
     return jsonify({"msg": "좋아요 취소"})
 
 
