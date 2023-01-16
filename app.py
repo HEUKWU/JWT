@@ -7,7 +7,8 @@ import certifi
 
 ca = certifi.where()
 
-client = MongoClient('mongodb+srv://idol_project:sparta@cluster0.cddqrid.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
+client = MongoClient(
+    'mongodb+srv://idol_project:sparta@cluster0.cddqrid.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 
 SECRET_KEY = 'SPARTA'
@@ -15,6 +16,7 @@ SECRET_KEY = 'SPARTA'
 import jwt
 import datetime
 import hashlib
+
 
 @app.route('/')
 def home():
@@ -25,18 +27,21 @@ def home():
         user_info = payload['id']
         return render_template('index.html', user_info=user_info)
     except jwt.ExpiredSignatureError:
-        return redirect(url_for("login", msg = "로그인 시간 만료"))
+        return redirect(url_for("login", msg="로그인 시간 만료"))
     except jwt.exceptions.DecodeError:
-        return redirect(url_for("login", msg = "로그아웃 완료"))
+        return redirect(url_for("login", msg="로그아웃 완료"))
+
 
 @app.route('/login')
 def login():
     msg = request.args.get("msg")
     return render_template('login.html', msg=msg)
 
+
 @app.route('/register')
 def register():
     return render_template('register.html')
+
 
 # API
 # 회원가입
@@ -53,10 +58,12 @@ def api_register():
         check = 0
     return jsonify({'result': 'success', 'check': check})
 
+
 @app.route('/api/double', methods=['GET'])
 def doubleCheck():
-    user = list(db.user.find({},{'_id':False}))
+    user = list(db.user.find({}, {'_id': False}))
     return jsonify({'user': user})
+
 
 # 로그인
 @app.route('/api/login', methods=['POST'])
@@ -71,13 +78,14 @@ def api_login():
     if result is not None:
         payload = {
             'id': id_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=5*60)
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=5 * 60)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
         return jsonify({'result': 'success', 'token': token})
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
+
 
 @app.route('/api/post', methods=['GET'])
 def show_group():
@@ -101,8 +109,11 @@ def show_group():
         else:
             result_list.append(i)
 
-    result_list = left + right
+    if len(result_list) == 0:
+        result_list = left + right
+
     return jsonify({"group_list": result_list, "like_list": like_list})
+
 
 @app.route('/api/like', methods=['POST'])
 def like():
@@ -112,9 +123,11 @@ def like():
     id = payload['id']
 
     like_list = db.like.find_one({"id": id}, {'_id': False})
+    like_now = db.idol_groups.find_one({"group_num": num_receive})["like"]
     if like_list is not None:
         like_list["group_num"].append(num_receive)
         db.like.update_one({"id": id}, {'$set': {'group_num': like_list["group_num"]}})
+
     else:
         doc = {
             "id": id,
@@ -122,7 +135,23 @@ def like():
         }
         db.like.insert_one(doc)
 
+    db.idol_groups.update_one({"group_num": num_receive}, {'$set': {'like': like_now + 1}})
     return jsonify({"msg": "좋아요 성공"})
+
+
+@app.route('/api/like/cancel', methods=['POST'])
+def like_cancel():
+    num_receive = request.form["num_give"]
+    token_receive = request.cookies.get('mytoken')
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    id = payload['id']
+
+    like_list = db.like.find_one({"id": id}, {'_id': False})
+    like_list["group_num"].remove(num_receive)
+    db.like.update_one({"id": id}, {'$set': {'group_num': like_list["group_num"]}})
+
+    return jsonify({"msg": "좋아요 취소"})
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
