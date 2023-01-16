@@ -93,26 +93,27 @@ def show_group():
     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
     id = payload['id']
 
-    group_list = list(db.idol_groups.find({}, {'_id': False}))
+    # group_list = list(db.idol_groups.find({}, {'_id': False}))
+    group_list2 = list(db.idol_groups.find({}, {'_id': False}).sort("like", -1))
     like_list = db.like.find_one({"id": id}, {'_id': False})
-    result_list = []
-    left = []
-    right = []
+    # result_list = []
+    # left = []
+    # right = []
+    #
+    # for i in group_list:
+    #     num = i["group_num"]
+    #     if like_list is not None:
+    #         if num in like_list["group_num"]:
+    #             left.append(i)
+    #         else:
+    #             right.append(i)
+    #     else:
+    #         result_list.append(i)
+    #
+    # if len(result_list) == 0:
+    #     result_list = left + right
 
-    for i in group_list:
-        num = i["group_num"]
-        if like_list is not None:
-            if num in like_list["group_num"]:
-                left.append(i)
-            else:
-                right.append(i)
-        else:
-            result_list.append(i)
-
-    if len(result_list) == 0:
-        result_list = left + right
-
-    return jsonify({"group_list": result_list, "like_list": like_list})
+    return jsonify({"group_list": group_list2, "like_list": like_list})
 
 
 @app.route('/api/like', methods=['POST'])
