@@ -1,0 +1,46 @@
+.title {
+    text-align: center;
+    font-size: 30px;
+}
+
+.loginBox {
+    width: 600px;
+    height: 900px;
+    margin: auto;
+    border: 3px solid black;
+    border-radius: 20px;
+}
+
+.inputSection {
+    display: flex;
+}
+
+.idpw {
+    width: 300px;
+    margin: 100px 0 30px 150px;
+}
+
+.loginSign {
+    text-align: center;
+}
+
+#doubleCheck {
+    margin-left: 10px;
+    margin-top: 100px;
+}
+
+#id_check_sucess {
+    width: 30px;
+    margin-left: 10px;
+    margin-top: 100px;
+    display: none;
+}
+
+.loginBtn {
+    display: inline-block;
+    margin-left: 120px;
+}
+
+.signUp {
+    display: inline-block;
+}
