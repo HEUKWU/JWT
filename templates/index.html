@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
     <title>Vote your Celeb!</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +18,7 @@
     <!--  js-->
     <script src="../static/js/login.js"></script>
     <script src="../static/js/main_page/group_list.js"></script>
-
+    <script src="../static/js/main_page/like.js"></script>
     <style>
         @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-std.css");
 
@@ -57,9 +56,20 @@
         .group_list {
             width: 80%;
         }
+
+        .card-footer {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background-color: transparent;
+        }
     </style>
     <script>
-
+        function log_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃 되었습니다.')
+            window.location.href = '/';
+        }
     </script>
 </head>
 <body>
@@ -67,6 +77,10 @@
     <h1>아이돌 대문</h1>
 </div>
 <div class="content">
+    <div>
+        <p>{{ user_info }}</p>
+        <button type="button" class="btn btn-outline-secondary loginBtn" onclick="log_out()">로그아웃</button>
+    </div>
     <div class="group_list">
         <div id="cards" class="row row-cols-1 row-cols-md-1 g-2" style="flex-direction: column">
             <div class="card mb-3">
@@ -89,24 +103,6 @@
             </div>
         </div>
     </div>
-</div>
-=======
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <script>
-        function log_out() {
-            $.removeCookie('mytoken', {path: '/'});
-            alert('로그아웃 되었습니다.')
-            window.location.href = '/';
-        }
-    </script>
-</head>
-<body>
-<div>
-    <p>{{user_info}}</p>
-    <button type="button" class="btn btn-outline-secondary loginBtn" onclick="log_out()">로그아웃</button>
->>>>>>> 4c56057f63b0f1621aff3fde41899b49776afe56
 </div>
 </body>
 </html>

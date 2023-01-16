@@ -1,22 +1,32 @@
 $(document).ready(function () {
-    alert("왔다.")
     show_list()
 })
 
 function show_list() {
-    alert("show_list")
     $.ajax({
         type: "GET",
         url: "/api/post",
         data: {},
         success: function (response) {
-            let rows = response["list"]
-            for(let i=0; i<rows.length; i++){
+            let rows = response["group_list"]
+            let like_list = response["like_list"]
+
+            for (let i = 0; i < rows.length; i++) {
                 let group_name = rows[i]["group_name"]
                 let image = rows[i]["image"]
                 let desc = rows[i]["desc"]
                 let like = rows[i]["like"]
+                let group_num = rows[i]["group_num"]
 
+                let like_id = ""
+                let like_text = ""
+                if (like_list["group_num"].includes(group_num)) {
+                    like_text = "❤ " + like
+                    like_id = "like_down(" + group_num + ")"
+                } else {
+                    like_text = "🤍 " + like
+                    like_id = "like_up(" + group_num + ")"
+                }
                 temp_html = `<div class="card mb-3">
                                 <div class="row g-0">
                                     <div class="col-md-4">
@@ -28,9 +38,9 @@ function show_list() {
                                             <h5 class="card-title">${group_name}</h5>
                                             <p class="card-text">${desc}</p>
                                         </div>
-                                        <div class="card-footer">
-                                            <small class="text-muted">🤍${like}</small>
-                                        </div>
+                                        <button onclick=${like_id} class="card-footer">
+                                            <small class="text-muted">${like_text}</small>
+                                        </button>
                                     </div>
                                 </div>
                             </div>`
@@ -39,3 +49,8 @@ function show_list() {
         }
     })
 }
+
+const heart_btn = document.querySelector(".card-footer")
+heart_btn.addEventListener('click', () => {
+    console.log(1)
+});
