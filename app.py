@@ -27,9 +27,9 @@ def home():
         user_info = payload['id']
         return render_template('index.html', user_info=user_info)
     except jwt.ExpiredSignatureError:
-        return redirect(url_for("login", msg = "로그인 필요"))
+        return redirect(url_for("login", msg = "로그인 시간 만료"))
     except jwt.exceptions.DecodeError:
-        return redirect(url_for("login", msg = "로그인 필요"))
+        return redirect(url_for("login", msg = "로그아웃 완료"))
 
 @app.route('/login')
 def login():
@@ -73,7 +73,7 @@ def api_login():
     if result is not None:
         payload = {
             'id': id_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=60)
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=30)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
