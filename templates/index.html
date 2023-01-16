@@ -153,9 +153,9 @@
     <h1>아이돌 대문</h1>
 </div>
 <div class="content">
-    <div>
-        <p>{{ user_info }}</p>
-        <button type="button" class="btn btn-outline-secondary loginBtn" onclick="log_out()">로그아웃</button>
+    <div class="user_logout" style="margin-left: 1000px;" >
+        <span>{{ user_info }}님</span>
+        <button type="button" class="btn btn-primary" onclick="log_out()">로그아웃</button>
     </div>
     <div class="group_list">
         <div id="cards" class="row row-cols-1 row-cols-md-2 g-4" style="flex-direction: column">
