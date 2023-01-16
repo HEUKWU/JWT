@@ -1,52 +1,36 @@
-.title {
-    text-align: center;
-    font-size: 30px;
-    margin-top: 300px;
+body {
+    min-height: 100vh;
+
+    background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
+    background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+    background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+    background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+    background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
 }
 
-.loginBox {
-    width: 500px;
-    height: 450px;
-    margin: auto;
-    border: 1px solid black;
-    border-radius: 20px;
+.input-form {
+    max-width: 680px;
+
+    margin-top: 380px;
+    padding: 32px;
+
+    background: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
 }
 
-.inputSection {
-    display: flex;
-}
-
-.idpw {
-    width: 300px;
-    margin: 70px 0 30px 80px;
-}
-
-.loginSign {
-    text-align: center;
-    margin-right: 45px
-}
-
-.text {
-    margin-bottom: 5px;
-}
-
-#doubleCheck {
-    margin-left: 10px;
-    margin-top: 100px;
+.loginBtn {
+    margin-left: 449px;
 }
 
 #id_check_sucess {
     width: 30px;
-    margin-left: 10px;
-    margin-top: 100px;
     display: none;
 }
-
-.loginBtn {
-    display: inline-block;
-    margin-left: 130px;
-}
-
-.signUp {
-    display: inline-block;
+.doubleCheck {
+    margin-top: 10px;
 }
