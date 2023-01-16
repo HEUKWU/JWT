@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
     <title>Vote your Celeb!</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -89,6 +90,23 @@
         </div>
     </div>
 </div>
+=======
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script>
+        function log_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃 되었습니다.')
+            window.location.href = '/';
+        }
+    </script>
+</head>
+<body>
+<div>
+    <p>{{user_info}}</p>
+    <button type="button" class="btn btn-outline-secondary loginBtn" onclick="log_out()">로그아웃</button>
+>>>>>>> 4c56057f63b0f1621aff3fde41899b49776afe56
 </div>
 </body>
 </html>
