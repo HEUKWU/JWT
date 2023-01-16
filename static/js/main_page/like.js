@@ -1,6 +1,4 @@
 function like_up(num) {
-    alert(num)
-    alert(typeof num)
     $.ajax({
         type: "POST",
         url: "/api/like",
