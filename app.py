@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 
 app = Flask(__name__)
@@ -18,26 +20,6 @@ import hashlib
 
 @app.route('/')
 def home():
-<<<<<<< HEAD
-    # token_receive = request.cookies.get('mytoken')
-    #
-    # try:
-    #     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-    #     user_info = db.user.find_one({"username": payload["id"]})
-    #     return render_template('index.html', user_info=user_info)
-    # except jwt.ExpiredSignatureError:
-    #     return redirect(url_for("login", msg = "로그인 필요"))
-    # except jwt.exceptions.DecodeError:
-    #     return redirect(url_for("login", msg = "로그인 필요"))
-    return render_template('main.html')
-    # if request.cookies.get('mytoken') is not None:
-    #     token_receive = request.cookies.get('mytoken')
-    #     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-    #     user_info = db.user.find_one({"username": payload["id"]})
-    #     return render_template('index.html', user_info=user_info)
-    # else:
-    #     return render_template('login.html')
-=======
     token_receive = request.cookies.get('mytoken')
 
     try:
@@ -48,7 +30,6 @@ def home():
         return redirect(url_for("login", msg = "로그인 필요"))
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg = "로그인 필요"))
->>>>>>> b85b359e5092215abc6ec2b76ff9ccf3dbcf2a39
 
 @app.route('/login')
 def login():
@@ -92,13 +73,23 @@ def api_login():
     if result is not None:
         payload = {
             'id': id_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=5)
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=5*60)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
         return jsonify({'result': 'success', 'token': token})
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
+
+@app.route('/api/post', methods=['GET'])
+def show_group():
+    token_receive = request.cookies.get('mytoken')
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    id = payload['id']
+    
+    group_list = list(db.idol_groups.find({}, {'_id': False}))
+    like_list = db.like.find_one({"id": id})
+    return jsonify({"list": group_list})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
