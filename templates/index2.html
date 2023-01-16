@@ -13,7 +13,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-
+    <script src="../static/js/deep_page/deep_page.js"></script>
     <title>아이돌</title>
 
     <style>
@@ -139,7 +139,7 @@
 <body>
 <div>
 	<div class="artist_name">
-		<h1>BTS(방탄소년단)</h1>
+		<h1>{{group["group_name"]}}</h1>
 	</div>
 
 	<div class="main_title">
@@ -147,20 +147,21 @@
 		<dl>
 			<p>
 			<dt>그룹결성</dt>
-			<dd>2013년 6월 13일에 데뷔한 대한민국의 7인조 보이그룹이다.</dd>
+			<dd>{{group["desc"]}}</dd>
 			</p>
 			<p><dt>소속회사(agency)</dt>
-			<dd>빅히트 엔터테이먼트</dd>
+			<dd>{{group["agency"]}}</dd>
 			</p>
 			<p>
-			<dt>comment</dt>
-			<dd>멤버 진은 미필이다.</dd>
+			<dt>데뷔</dt>
+			<dd>{{group["debut"]}}</dd>
 			</p>
 		</dl>
 	</div>
 </div>
 
 <div class="wrap">
+    <input id="idol_list" value="{{ idol_list }}" style="display: none"/>
     <div id="cards_box" class="row row-cols-1 row-cols-md-4 g-4">
         <div class="col">
             <div class="card">

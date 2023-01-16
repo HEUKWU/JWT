@@ -140,5 +140,19 @@ def like_cancel():
     return jsonify({"msg": "좋아요 취소"})
 
 
+@app.route('/api/deep', methods=["GET"])
+def deep_post():
+    num_receive = int(request.args.get("num"))
+    group_db = db.idol_groups.find_one({"group_num": num_receive}, {"_id": False})
+    group_name = group_db["group_name"]
+
+    idol_list = list(db.idols.find({}, {"_id": False}))
+    result = []
+    for i in idol_list:
+        if i["group"] == group_name:
+            result.append(i)
+    return render_template('index2.html', idol_list=idol_list, group=group_db)
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
