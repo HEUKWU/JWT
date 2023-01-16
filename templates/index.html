@@ -73,9 +73,17 @@
             text-decoration: none;
             color: black;
         }
+
         a:hover {
             text-decoration: none;
             color: black;
+        }
+        .mybtn {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
         }
     </style>
     <script>
@@ -83,6 +91,59 @@
             $.removeCookie('mytoken', {path: '/'});
             alert('로그아웃 되었습니다.')
             window.location.href = '/';
+        }
+
+        $(document).ready(function () {
+            listing();
+        });
+
+        function listing() {
+            $('#post-box').hide()
+            $.ajax({
+                type: 'GET',
+                url: '/comment',
+                data: {},
+                success: function (response) {
+                    let rows = response['comments']
+                    let id = response['id']
+                    rows.reverse();
+                    for (let i = 0; i < rows.length; i++) {
+                        if (i > 2) {
+                            break
+                        }
+                        let comment = rows[i]['comments'];
+                        let id = rows[i]['id'];
+                        let temp_html = `<div class="col">
+                                <p class="mycomment">${id} : ${comment}</p>
+                                </div>`;
+                        $('#post-box').append(temp_html);
+                    }
+                }
+            })
+        }
+
+        function commenting() {
+
+            let comment = $('#floatingTextarea').val()
+            if (comment === '') {
+                alert('댓글을 입력하세요.');
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: '/comment',
+                    data: {comment_give: comment},
+                    success: function (response) {
+                        alert(response['msg'])
+                        window.location.reload()
+                    }
+                });
+
+            }
+        }
+
+
+        function open_box() {
+            $('#post-box').show()
         }
     </script>
 </head>
@@ -103,7 +164,7 @@
                         <img src="https://cdn.crowdpic.net/list-thumb/thumb_l_FD8184F80AF8D28615C95B97C1AE4D63.jpeg"
                              class="card-img-top" alt="..." style="height: 100%"/>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8" id="cards-box">
                         <div class="card-body">
                             <h5 class="card-title">방탄소년단</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
@@ -112,11 +173,23 @@
                         <div class="card-footer">
                             <small class="text-muted">좋아요</small>
                         </div>
+                        <div>
+                            <button onclick="open_box()" class="btn btn-info">응원😍</button>
+                        </div>
+                        <div class="mypost" id="post-box">
+                            <div class="form-floating" id="comment">
+                                <textarea class="form-control" placeholder=응원부탁해요
+                                          id="floatingTextarea"></textarea>
+                                <label for="floatingTextarea"></label>
+                            </div>
+                            <div class="mybtn">
+                                <button onclick="commenting()" class="btn btn-dark">입력</button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 </body>
 </html>
