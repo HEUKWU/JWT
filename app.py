@@ -117,7 +117,7 @@ def show_group():
 
 @app.route('/api/like', methods=['POST'])
 def like():
-    num_receive = request.form["num_give"]
+    num_receive = int(request.form["num_give"])
     token_receive = request.cookies.get('mytoken')
     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
     id = payload['id']
