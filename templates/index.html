@@ -73,16 +73,68 @@
             text-decoration: none;
             color: black;
         }
+
         a:hover {
             text-decoration: none;
             color: black;
         }
+         .mybtn {
+        display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+    }
     </style>
     <script>
         function log_out() {
             $.removeCookie('mytoken', {path: '/'});
             alert('로그아웃 되었습니다.')
             window.location.href = '/';
+        }
+
+        $(document).ready(function () {
+            listing();
+        });
+
+        function listing() {
+            $('#post-box').hide()
+            $.ajax({
+                type: 'GET',
+                url: '/comment',
+                data: {},
+                success: function (response) {
+                    let rows = response['comments']
+                    for (let i = 0; i < rows.length; i++) {
+                        let comment = rows[i]['comment']
+                        let temp_html = `<div class="col">
+                                <p class="mycomment">"${comment}"</p>
+                                </div>`
+                        $('#cards-box').append(temp_html)
+
+                    }
+                }
+            })
+        }
+
+        function commenting() {
+
+            let comment = $('#floatingTextarea').val()
+
+            $.ajax({
+                type: 'POST',
+                url: '/comment',
+                data: {comment_give: comment},
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            });
+        }
+
+
+        function open_box() {
+            $('#post-box').show()
         }
     </script>
 </head>
@@ -110,13 +162,25 @@
                                 additional content. This content is a little bit longer.</p>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">좋아요</small>
+                                    <small class="text-muted">좋아요</small>
+                                </div>
+                        <div>
+                            <button onclick="open_box()" class="btn btn-info">응원😍</button>
+                        </div>
+                        <div class="mypost" id="post-box">
+                            <div class="form-floating" id="comment">
+                                <textarea class="form-control" placeholder=응원부탁해요
+                                          id="floatingTextarea"></textarea>
+                                <label for="floatingTextarea"></label>
+                            </div>
+                            <div class="mybtn">
+                                <button onclick="commenting()" class="btn btn-dark">끝</button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 </body>
 </html>
