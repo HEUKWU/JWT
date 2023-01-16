@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2082a59b-267c-412b-8861-fed1588de777" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/JWT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/JWT.iml" afterDir="false" />
+    <list default="true" id="2082a59b-267c-412b-8861-fed1588de777" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +39,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2KOeuFwRMz43J08R637grTWnL9o" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -57,7 +58,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Flask 서버.Flask (app.py)">
+  <component name="RunManager" selected="Flask server.Flask (app.py)">
     <configuration name="JWT" type="PythonConfigurationType" factoryName="Python">
       <module name="JWT" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -156,10 +157,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Flask 서버.Flask (app.py)" />
+        <item itemvalue="Flask server.Flask (app.py)" />
         <item itemvalue="Python.typing" />
         <item itemvalue="Python.cli" />
-        <item itemvalue="Flask 서버.Flask (manager.py)" />
       </list>
     </recent_temporary>
   </component>
@@ -172,17 +172,32 @@
       <option name="presentableId" value="Default" />
       <updated>1673850276374</updated>
       <workItem from="1673850285163" duration="15658000" />
+      <workItem from="1673883019553" duration="2812000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/JWT$JWT.coverage" NAME="JWT 커버리지 결과" MODIFIED="1673874508423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/JWT$Flask__app_py_.coverage" NAME="Flask (app.py) 커버리지 결과" MODIFIED="1673882497782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/JWT$typing.coverage" NAME="typing 커버리지 결과" MODIFIED="1673878260840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/Lib/site-packages/flask" />
-    <SUITE FILE_PATH="coverage/JWT$Flask__manager_py_.coverage" NAME="Flask (manager.py) 커버리지 결과" MODIFIED="1673878071620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/JWT$.coverage" NAME="오픈 Coverage Results" MODIFIED="1673868229607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JWT$cli.coverage" NAME="cli 커버리지 결과" MODIFIED="1673878170760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/Lib/site-packages/flask" />
+    <SUITE FILE_PATH="coverage/JWT$app.coverage" NAME="app Coverage Results" MODIFIED="1673851000335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JWT$JWT.coverage" NAME="JWT 커버리지 결과" MODIFIED="1673863044230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/JWT$Flask__manager_py_.coverage" NAME="Flask (manager.py) Coverage Results" MODIFIED="1673873816439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/JWT$typing.coverage" NAME="typing 커버리지 결과" MODIFIED="1673878260840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/Lib/site-packages/flask" />
+    <SUITE FILE_PATH="coverage/JWT$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1673885717389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/JWT$manager.coverage" NAME="manager Coverage Results" MODIFIED="1673861196686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -105,13 +105,18 @@
                 data: {},
                 success: function (response) {
                     let rows = response['comments']
+                    let id = response['id']
+                    rows.reverse();
                     for (let i = 0; i < rows.length; i++) {
-                        let comment = rows[i]['comment']
+                        if (i > 2) {
+                            break
+                        }
+                        let comment = rows[i]['comments'];
+                        let id = rows[i]['id'];
                         let temp_html = `<div class="col">
-                                <p class="mycomment">"${comment}"</p>
-                                </div>`
-                        $('#cards-box').append(temp_html)
-
+                                <p class="mycomment">${id} : ${comment}</p>
+                                </div>`;
+                        $('#post-box').append(temp_html);
                     }
                 }
             })
@@ -120,16 +125,20 @@
         function commenting() {
 
             let comment = $('#floatingTextarea').val()
+            if (comment === '') {
+                alert('댓글을 입력하세요.');
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: '/comment',
+                    data: {comment_give: comment},
+                    success: function (response) {
+                        alert(response['msg'])
+                        window.location.reload()
+                    }
+                });
 
-            $.ajax({
-                type: 'POST',
-                url: '/comment',
-                data: {comment_give: comment},
-                success: function (response) {
-                    alert(response['msg'])
-                    window.location.reload()
-                }
-            });
+            }
         }
 
 
@@ -155,7 +164,7 @@
                         <img src="https://cdn.crowdpic.net/list-thumb/thumb_l_FD8184F80AF8D28615C95B97C1AE4D63.jpeg"
                              class="card-img-top" alt="..." style="height: 100%"/>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8" id="cards-box">
                         <div class="card-body">
                             <h5 class="card-title">방탄소년단</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
@@ -174,7 +183,7 @@
                                 <label for="floatingTextarea"></label>
                             </div>
                             <div class="mybtn">
-                                <button onclick="commenting()" class="btn btn-dark">끝</button>
+                                <button onclick="commenting()" class="btn btn-dark">입력</button>
                             </div>
 
                         </div>
