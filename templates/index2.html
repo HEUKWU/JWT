@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+    <title>아이돌</title>
+
+    <style>
+	* {
+		font-family: 'Do Hyeon', sans-serif;
+
+	}
+
+    .artist_name {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+		height: 100px;
+
+		font-size: 200px;
+
+        margin: 0px auto 20px auto;
+
+        width: 1100px;
+
+        border: 2px solid black;
+    }
+
+
+    .table {
+        box-shadow: 0px 0px 3px 0px;
+
+        max-width: 95%;
+        width: 1100px;
+
+        max-height: 95%;
+        height: 300px;
+
+        margin: 20px auto 40px auto;
+
+        border: 2px solid black;
+
+    }
+
+    .main_title > dl{
+		margin: auto;
+
+		width: 860px;
+		height: 300px;
+
+		display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+		font-size: 21px;
+
+		color: white;
+
+	}
+	.main_title {
+		display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+		width: 1100px;
+		height: 300px;
+
+		margin: auto;
+
+		box-shadow: 1px 3px 6px 0px;
+
+        background-color: black;
+
+
+
+
+
+	}
+
+	.title_image {
+		height: 300px;
+
+		box-shadow: 2px 1px 1px 0px;
+	}
+
+
+
+	.member > div {
+		margin: 20px auto 10px auto;
+	}
+
+    .wrap {
+        max-width: 1100px;
+        width: 95%;
+
+        height: 100%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        margin: 20px auto 20px auto;
+
+        border: 2px solid black;
+
+        padding: 10px;
+    }
+
+    .card {
+        border: 2px solid black;
+
+
+    }
+
+
+
+    </style>
+
+    <script>
+
+    </script>
+</head>
+<body>
+<div>
+	<div class="artist_name">
+		<h1>BTS(방탄소년단)</h1>
+	</div>
+
+	<div class="main_title">
+		<img class="title_image" src="https://img.hankyung.com/photo/201811/01.18181797.1.jpg">
+		<dl>
+			<p>
+			<dt>그룹결성</dt>
+			<dd>2013년 6월 13일에 데뷔한 대한민국의 7인조 보이그룹이다.</dd>
+			</p>
+			<p><dt>소속회사(agency)</dt>
+			<dd>빅히트 엔터테이먼트</dd>
+			</p>
+			<p>
+			<dt>comment</dt>
+			<dd>멤버 진은 미필이다.</dd>
+			</p>
+		</dl>
+	</div>
+</div>
+
+<div class="wrap">
+    <div id="cards_box" class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col">
+            <div class="card">
+                <img src="https://ibighit.com/bts/images/profile/proof/member/member-jk.jpg" class="card-img-top"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">정국</h5>
+                    <hr>
+                    <p class="card-text">본명 : 김정국</p>
+                    <hr>
+                    <p class="card-text">출생연도 : 1995년 12월 30일 (27세)</p>
+                    <hr>
+                    <p class="card-text">국적 : 대한민국</p>
+                    <hr>
+                    <p>포지션 : 서브보컬 & 댄서</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://ibighit.com/bts/images/profile/proof/member/member-jimin.jpg" class="card-img-top"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">지민</h5>
+                    <hr>
+                    <p class="card-text">본명 : 박지민</p>
+                    <hr>
+                    <p class="card-text">출생연도 : 1995년 10월 13일 (27세)</p>
+                    <hr>
+                    <p class="card-text">국적 : 대한민국</p>
+                    <hr>
+                    <p>포지션 : 메인댄서, 리드보컬</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://ibighit.com/bts/images/profile/proof/member/member-jhope.jpg" class="card-img-top"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">제이홉</h5>
+                    <hr>
+                    <p class="card-text">본명 : 정호석</p>
+                    <hr>
+                    <p class="card-text">출생연도 : 1994년 2월 18일 (28세)</p>
+                    <hr>
+                    <p class="card-text">국적 : 대한민국</p>
+                    <hr>
+                    <p>포지션 : 메인댄서, 서브래퍼</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://ibighit.com/bts/images/profile/proof/member/member-suga.jpg" class="card-img-top"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">슈가</h5>
+                    <hr>
+                    <p class="card-text">본명 : 민윤기</p>
+                    <hr>
+                    <p class="card-text">출생연도 : 1993년 3월 9일 (29세)</p>
+                    <hr>
+                    <p class="card-text">국적 : 대한민국</p>
+                    <hr>
+                    <p>포지션 : 리드래퍼</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://ibighit.com/bts/images/profile/proof/member/member-v.jpg" class="card-img-top"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">뷔(V)</h5>
+                    <hr>
+                    <p class="card-text">본명 : 김태형</p>
+                    <hr>
+                    <p class="card-text">출생연도 : 1995년 12월 30일 (27세)</p>
+                    <hr>
+                    <p class="card-text">국적 : 대한민국</p>
+                    <hr>
+                    <p>포지션 : 서브보컬, 댄서</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://ibighit.com/bts/images/profile/proof/member/member-rm.jpg" class="card-img-top"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">RM</h5>
+                    <hr>
+                    <p class="card-text">본명 : 김석진</p>
+                    <hr>
+                    <p class="card-text">출생연도 : 1994년 9월 12일 (28세)</p>
+                    <hr>
+                    <p class="card-text">국적 : 대한민국</p>
+                    <hr>
+                    <p>포지션 : 리더, 메인래퍼</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="album_cover">앨범자켓</th>
+      <th scope="col">앨범명</th>
+      <th scope="col">수록곡</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><img src="https://ibighit.com/bts/images/bts/discography/love_yourself-answer/album-cover.jpg" alt="" width="150px"></th>
+      <td>Mark(1집)</td>
+      <td>
+		  <ul>
+			  <li>A</li>
+			  <li>B</li>
+			  <li>C</li>
+			  <li>D</li>
+			  <li>E</li>
+			  <li>F</li>
+		  </ul>
+	  </td>
+    </tr>
+    <tr>
+      <th scope="row"><img src="https://ibighit.com/bts/images/bts/discography/dynamite/Q7gBkUusiDcIYljQOMX9ow6W.jpg" alt="" width="150px"></th>
+      <td>Mark(2집)</td>
+      <td>
+		  <ul>
+			  <li>A</li>
+			  <li>B</li>
+			  <li>C</li>
+			  <li>D</li>
+			  <li>E</li>
+			  <li>F</li>
+		  </ul>
+	  </td>
+    </tr>
+    <tr>
+      <th scope="row"><img src="https://upload.wikimedia.org/wikipedia/ko/5/59/BTS_-_Butter_%28%EC%9D%8C%EB%B0%98%29.jpg" alt="" width="150px"></th>
+      <td>Mark(3집)</td>
+      <td>
+		  <ul>
+			  <li>A</li>
+			  <li>B</li>
+			  <li>C</li>
+			  <li>D</li>
+			  <li>E</li>
+			  <li>F</li>
+		  </ul>
+	  </td>
+    </tr>
+  </tbody>
+</table>
+
+
+</body>
+</html>
