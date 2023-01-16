@@ -115,8 +115,9 @@ def show_group():
     return jsonify({"group_list": result_list, "like_list": like_list})
 
 
-@app.route('/api/like', methods=['POST'])
+@app.route("/api/like", methods=["POST"])
 def like():
+    print("like")
     num_receive = request.form["num_give"]
     token_receive = request.cookies.get('mytoken')
     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])

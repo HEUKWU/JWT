@@ -3,6 +3,7 @@ $(document).ready(function () {
 })
 
 function show_list() {
+    $('#cards').empty()
     $.ajax({
         type: "GET",
         url: "/api/post",
@@ -39,9 +40,6 @@ function show_list() {
                                             <h5 class="card-title">${group_name}</h5>
                                             <p class="card-text">${desc}</p>
                                         </div>
-                                        <button onclick=${like_id} class="card-footer">
-                                            <small class="text-muted">${like_text}</small>
-                                        </button>
                                         <button onclick=${like_id} class="card-footer">
                                             <small class="text-muted">${like_text}</small>
                                         </button>

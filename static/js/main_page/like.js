@@ -1,4 +1,6 @@
 function like_up(num) {
+    alert(num)
+    alert(typeof num)
     $.ajax({
         type: "POST",
         url: "/api/like",
@@ -13,7 +15,7 @@ function like_up(num) {
 function like_down(num) {
     $.ajax({
         type: "POST",
-        url: "/api/like/cancel",
+        url: "api/like/cancel",
         data: {num_give: num},
         success: function (response) {
             alert(response["msg"])
