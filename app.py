@@ -13,9 +13,7 @@ db = client.dbsparta
 SECRET_KEY = 'SPARTA'
 
 import jwt
-
 import datetime
-
 import hashlib
 
 @app.route('/')
@@ -73,13 +71,58 @@ def api_login():
     if result is not None:
         payload = {
             'id': id_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=30)
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=5*60)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
         return jsonify({'result': 'success', 'token': token})
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
+
+@app.route('/api/post', methods=['GET'])
+def show_group():
+    token_receive = request.cookies.get('mytoken')
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    id = payload['id']
+
+    group_list = list(db.idol_groups.find({}, {'_id': False}))
+    like_list = db.like.find_one({"id": id}, {'_id': False})
+    result_list = []
+    left = []
+    right = []
+
+    for i in group_list:
+        num = i["group_num"]
+        if like_list is not None:
+            if num in like_list["group_num"]:
+                left.append(i)
+            else:
+                right.append(i)
+        else:
+            result_list.append(i)
+
+    result_list = left + right
+    return jsonify({"group_list": result_list, "like_list": like_list})
+
+@app.route('/api/like', methods=['POST'])
+def like():
+    num_receive = request.form["num_give"]
+    token_receive = request.cookies.get('mytoken')
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    id = payload['id']
+
+    like_list = db.like.find_one({"id": id}, {'_id': False})
+    if like_list is not None:
+        like_list["group_num"].append(num_receive)
+        db.like.update_one({"id": id}, {'$set': {'group_num': like_list["group_num"]}})
+    else:
+        doc = {
+            "id": id,
+            "group_num": [num_receive]
+        }
+        db.like.insert_one(doc)
+
+    return jsonify({"msg": "좋아요 성공"})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
