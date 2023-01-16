@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+
+<title>스파르타 피디아</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+<style>
+* {
+font-family: 'Gowun Dodum', sans-serif;
+}
+
+
+</style>
+<script>
+    $(document).ready(function () {
+            listing();
+        });
+
+function listing() {
+    $.ajax({
+        type: 'GET',
+        url: '/comment',
+        data: {},
+        success: function (response) {
+            let rows = response['comments']
+            for (let i=0; i < rows.length; i++){
+                 let comment = rows[i]['comment']
+                let temp_html = `<div class="col">
+                                <p class="mycomment">"${comment}"</p>
+                                </div>`
+                $('#cards-box').append(temp_html)
+
+            }
+        }
+    })
+}
+
+function commenting() {
+
+    let comment = $('#comment').val()
+
+    $.ajax({
+        type: 'POST',
+        url: '/comment',
+        data: {comment_give: comment},
+        success: function (response) {
+            alert(response['msg'])
+            window.location.reload()
+        }
+    });
+}
+
+
+
+
+function open_box(){
+$('#post-box').show()
+}
+function close_box(){
+$('#post-box').hide()
+    alert('응원완료')
+}
+
+</script>
+</head>
+<body>
+<div >
+  <button onclick="open_box()">응원버튼</button>
+</div>
+<div  id="post-box">
+ <div class="form-floating" id = "comment">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+  <label for="floatingTextarea">Comments</label>
+</div>
+<div>
+  <button onclick="close_box()" class="btn btn-dark">기록하기</button>
+    <button onclick="commenting()"  id = "cards-box"class="btn btn-dark">응원</button>
+</div>
+</div>
+
+</body>
+
+</html>
