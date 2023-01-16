@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Show Your Bucket!</title>
@@ -11,7 +11,7 @@
           crossorigin="anonymous">
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
     <!--  css-->
@@ -21,22 +21,33 @@
 
 </head>
 <body>
-<p class="title">Show Your Bucket</p>
-<div class="loginBox">
-    <div class="idpw">
-        <div class="input-group mb-3 id">
-            <input type="text" class="form-control" placeholder="아이디를 입력해주세요." aria-label="Username"
-                   aria-describedby="basic-addon1" id="loginId">
-        </div>
-        <div class="input-group mb-3 pw">
-            <input type="password" class="form-control" placeholder="비밀번호를 입력해주세요." aria-label="Username"
-                   aria-describedby="basic-addon1" id="loginPw">
+<div class="container">
+    <div class="input-form-backgroud row">
+        <div class="input-form col-md-12 mx-auto">
+            <h4 class="mb-3">회원가입</h4>
+            <div class="mb-3">
+                <label for="loginId">아이디</label>
+                <div>
+                    <input type="text" class="form-control" placeholder="아이디를 입력해주세요." aria-label="Username"
+                           aria-describedby="basic-addon1" id="loginId">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="loginPw">비밀번호<span class="text-muted"></label>
+                <input type="password" class="form-control" placeholder="비밀번호를 입력해주세요." aria-label="Username"
+                       aria-describedby="basic-addon1" id="loginPw">
+            </div>
+            <hr class="mb-4">
+            <div class="buttons">
+                <button type="button" class="btn btn-outline-secondary signUp" onclick="location.href='/register'">회원가입</button>
+                <button type="button" class="btn btn-outline-secondary loginBtn" onclick="loginClick()">로그인</button>
+            </div>
         </div>
     </div>
-    <div class="loginSign">
-        <button type="button" class="btn btn-outline-secondary signUp" onclick="location.href='/register'">회원가입</button>
-        <button type="button" class="btn btn-outline-secondary loginBtn" onclick="loginClick()">로그인</button>
-    </div>
+    <footer class="my-3 text-center text-small">
+        <p class="mb-1">&copy; 항해99 12기 7조</p>
+    </footer>
 </div>
 </body>
 </html>
