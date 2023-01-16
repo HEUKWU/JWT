@@ -20,14 +20,15 @@ function show_list() {
 
                 let like_id = ""
                 let like_text = ""
-                if (like_list["group_num"].includes(group_num)) {
+                if (like_list == null || !like_list["group_num"].includes(group_num)) {
+                    like_text = "❤ " + like
+                    like_id = "like_up(" + group_num + ")"
+                } else {
                     like_text = "❤ " + like
                     like_id = "like_down(" + group_num + ")"
-                } else {
-                    like_text = "🤍 " + like
-                    like_id = "like_up(" + group_num + ")"
                 }
-                temp_html = `<div class="card mb-3">
+                let temp_html = `<a href="#" onclick="show_list()">
+                            <div class="card mb-3">
                                 <div class="row g-0">
                                     <div class="col-md-4">
                                         <img src=${image}
@@ -41,16 +42,15 @@ function show_list() {
                                         <button onclick=${like_id} class="card-footer">
                                             <small class="text-muted">${like_text}</small>
                                         </button>
+                                        <button onclick=${like_id} class="card-footer">
+                                            <small class="text-muted">${like_text}</small>
+                                        </button>
                                     </div>
                                 </div>
-                            </div>`
+                            </div>
+                            </a>`
                 $('#cards').append(temp_html)
             }
         }
     })
 }
-
-const heart_btn = document.querySelector(".card-footer")
-heart_btn.addEventListener('click', () => {
-    console.log(1)
-});
