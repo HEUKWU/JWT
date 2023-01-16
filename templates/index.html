@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <title></title>
+    <script>
+        function log_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃 되었습니다.')
+            window.location.href = '/';
+        }
+    </script>
 </head>
 <body>
 <div>
-    {% if user_info %}
-    <p>{{user_info.id}}</p>
-    {% endif %}
+    <p>{{user_info}}</p>
+    <button type="button" class="btn btn-outline-secondary loginBtn" onclick="log_out()">로그아웃</button>
 </div>
 </body>
 </html>
