@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Show Your Bucket!</title>
@@ -14,40 +14,55 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
-<!--  css-->
+  <!--  css-->
   <link rel="stylesheet" href="static/css/register.css" />
-<!--  js-->
+  <!--  js-->
   <script src="../static/js/register/register.js"></script>
   <script src="../static/js/register/doubleCheck.js"></script>
 
+  <style>
+
+  </style>
+
 </head>
 <body>
-<p class="title">Show Your Bucket</p>
-<div class="loginBox">
-  <div class="inputSection">
-    <div class="idpw">
-      <div class="input-group mb-3 id" id="idSection">
-        <input type="text" class="form-control" placeholder="아이디를 입력해주세요." aria-label="Username"
-               aria-describedby="basic-addon1" id="loginId" check_result="fail" required>
-      </div>
-      <div class="input-group mb-3 pw">
-        <input type="password" class="form-control" placeholder="비밀번호를 입력해주세요." aria-label="Username"
-               aria-describedby="basic-addon1" id="loginPw">
-      </div>
-      <div>
-        <input type="password" type="password" class="form-control" placeholder="비밀번호를 확인해주세요." aria-label="Username"
-               aria-describedby="basic-addon1"  id="register-password-check" >
-      </div>
-    </div>
-    <div class="doubleCheck">
-      <button id="doubleCheck" type="button" onclick="doubleCheck()" class="btn btn-outline-dark">중복확인</button>
-      <img src="../static/img/check-mark-button-emoji-clipart-md.png" id="id_check_sucess">
+<div class="container">
+  <div class="input-form-backgroud row">
+    <div class="input-form col-md-12 mx-auto">
+      <h4 class="mb-3">회원가입</h4>
+        <div class="mb-3">
+          <label for="loginId">아이디</label>
+          <div>
+            <input type="text" class="form-control" placeholder="아이디를 입력해주세요." aria-label="Username"
+                   aria-describedby="basic-addon1" id="loginId" check_result="fail" required>
+            <div class="doubleCheck">
+              <button id="doubleCheck" type="button" onclick="doubleCheck()" class="btn btn-outline-dark">중복확인</button>
+              <img src="../static/img/check-mark-button-emoji-clipart-md.png" id="id_check_sucess">
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="loginPw">비밀번호<span class="text-muted">&nbsp;(영문, 숫자, 특수문자 중 2가지 이상 조합한 8자리 이내)</span></label>
+          <input type="password" class="form-control" placeholder="비밀번호를 입력해주세요." aria-label="Username"
+                 aria-describedby="basic-addon1" id="loginPw">
+        </div>
+
+        <div class="mb-3">
+          <label for="loginPw">비밀번호 확인</label>
+          <input type="password" type="password" class="form-control" placeholder="비밀번호를 확인해주세요." aria-label="Username"
+                 aria-describedby="basic-addon1"  id="register-password-check">
+        </div>
+        <hr class="mb-4">
+        <div class="buttons">
+          <button type="button" class="btn btn-outline-secondary signUp" onclick="location.href='/login'">뒤로가기</button>
+          <button type="button" class="btn btn-outline-secondary loginBtn" onclick="register()">가입완료</button>
+        </div>
     </div>
   </div>
-  <div class="loginSign">
-    <button type="button" class="btn btn-outline-secondary signUp" onclick="location.href='/login'">뒤로가기</button>
-    <button type="button" class="btn btn-outline-secondary loginBtn" onclick="register()">가입완료</button>
-  </div>
+  <footer class="my-3 text-center text-small">
+    <p class="mb-1">&copy; 항해99 12기 7조</p>
+  </footer>
 </div>
 </body>
 </html>
