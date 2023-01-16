@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Show Your Bucket!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- 부트스트랩 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+  <!--  css-->
+<!--  <link rel="stylesheet" href="static/css/register.css" />-->
+  <!--  js-->
+  <script src="../static/js/register/register.js"></script>
+  <script src="../static/js/register/doubleCheck.js"></script>
+
+  <style>
+    body {
+      min-height: 100vh;
+
+      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
+      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+    }
+
+    .input-form {
+      max-width: 680px;
+
+      margin-top: 380px;
+      padding: 32px;
+
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+
+    .loginBtn {
+      margin-left: 449px;
+    }
+
+    #id_check_sucess {
+      width: 30px;
+      display: none;
+    }
+    .doubleCheck {
+      margin-top: 10px;
+    }
+
+  </style>
+
+</head>
+<body>
+<div class="container">
+  <div class="input-form-backgroud row">
+    <div class="input-form col-md-12 mx-auto">
+      <h4 class="mb-3">회원가입</h4>
+        <div class="mb-3">
+          <label for="loginId">아이디</label>
+          <div>
+            <input type="text" class="form-control" placeholder="아이디를 입력해주세요." aria-label="Username"
+                   aria-describedby="basic-addon1" id="loginId" check_result="fail" required>
+            <div class="doubleCheck">
+              <button id="doubleCheck" type="button" onclick="doubleCheck()" class="btn btn-outline-dark">중복확인</button>
+              <img src="../static/img/check-mark-button-emoji-clipart-md.png" id="id_check_sucess">
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="loginPw">비밀번호<span class="text-muted">&nbsp;(영문, 숫자, 특수문자 중 2가지 이상 조합한 8자리 이내)</span></label>
+          <input type="password" class="form-control" placeholder="비밀번호를 입력해주세요." aria-label="Username"
+                 aria-describedby="basic-addon1" id="loginPw">
+        </div>
+
+        <div class="mb-3">
+          <label for="loginPw">비밀번호 확인</label>
+          <input type="password" type="password" class="form-control" placeholder="비밀번호를 확인해주세요." aria-label="Username"
+                 aria-describedby="basic-addon1"  id="register-password-check">
+        </div>
+        <hr class="mb-4">
+        <div class="buttons">
+          <button type="button" class="btn btn-outline-secondary signUp" onclick="location.href='/login'">뒤로가기</button>
+          <button type="button" class="btn btn-outline-secondary loginBtn" onclick="register()">가입완료</button>
+        </div>
+    </div>
+  </div>
+  <footer class="my-3 text-center text-small">
+    <p class="mb-1">&copy; 항해99 12기 7조</p>
+  </footer>
+</div>
+</body>
+</html>
