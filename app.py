@@ -7,30 +7,28 @@ import certifi
 
 ca = certifi.where()
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.dq4uizr.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
+client = MongoClient('mongodb+srv://idol_project:sparta@cluster0.cddqrid.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 
 SECRET_KEY = 'SPARTA'
 
 import jwt
-
 import datetime
-
 import hashlib
 
 @app.route('/')
 def home():
-    token_receive = request.cookies.get('mytoken')
-
-    try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.user.find_one({"username": payload["id"]})
-        return render_template('index.html', user_info=user_info)
-    except jwt.ExpiredSignatureError:
-        return redirect(url_for("login", msg = "로그인 필요"))
-    except jwt.exceptions.DecodeError:
-        return redirect(url_for("login", msg = "로그인 필요"))
-
+    # token_receive = request.cookies.get('mytoken')
+    #
+    # try:
+    #     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+    #     user_info = db.user.find_one({"username": payload["id"]})
+    #     return render_template('index.html', user_info=user_info)
+    # except jwt.ExpiredSignatureError:
+    #     return redirect(url_for("login", msg = "로그인 필요"))
+    # except jwt.exceptions.DecodeError:
+    #     return redirect(url_for("login", msg = "로그인 필요"))
+    return render_template('main.html')
     # if request.cookies.get('mytoken') is not None:
     #     token_receive = request.cookies.get('mytoken')
     #     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
