@@ -1,13 +1,14 @@
 .title {
     text-align: center;
     font-size: 30px;
+    margin-top: 300px;
 }
 
 .loginBox {
-    width: 600px;
-    height: 900px;
+    width: 500px;
+    height: 450px;
     margin: auto;
-    border: 3px solid black;
+    border: 1px solid black;
     border-radius: 20px;
 }
 
@@ -17,11 +18,16 @@
 
 .idpw {
     width: 300px;
-    margin: 100px 0 30px 150px;
+    margin: 70px 0 30px 80px;
 }
 
 .loginSign {
     text-align: center;
+    margin-right: 45px
+}
+
+.text {
+    margin-bottom: 5px;
 }
 
 #doubleCheck {
@@ -38,7 +44,7 @@
 
 .loginBtn {
     display: inline-block;
-    margin-left: 120px;
+    margin-left: 130px;
 }
 
 .signUp {
